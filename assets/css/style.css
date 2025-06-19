@@ -9,3 +9,24 @@
 body {
     font-family: "Jersey 15", sans-serif;
 }
+
+/* formatting cards */
+.card-img-frame {
+  width: 100%;
+  height: 200px;
+  background: url('../images/stadium.png') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.horse-img {
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 200px;
+  object-fit: contain;
+  background: transparent;
+  display: block;
+}
+/* end of formatting cards */
