@@ -1,4 +1,4 @@
-#  :racehorse: Lancashire Derby
+#  :racehorse: Lancashire Derby :horse:
 
 *Lancashire Derby* is a **one-page horse racing game** where you **bet from a fixed pot of cash**, aiming to **build your winnings before running out**. Quick races, shifting odds, and a pinch of Northern flair make every wager a thrill.
 
@@ -6,7 +6,7 @@
 
 ## **Live Demo**
 
-Play the Game Here: -add link-
+:video_game: Play the Game Here: -add link-
 
 
 ## Project overview
@@ -20,13 +20,13 @@ Play the Game Here: -add link-
 .Deploy the project using **Git** and **Github pages**.
 
 ## Table of contents
-1. [UX/UI Design](#uxui-design)
-2. [Features](#features)
-3. [Built with](#built-with)
-4. [Testing](#testing)
-5. [Deployment](#deployment)
-6. [AI augmentation](#ai-augmentation)
-7. [Credits](#credits)
+1. :art: [UX/UI Design](#uxui-design)
+2. :hammer: [Features](#features)
+3. :computer: [Built with](#built-with)
+4. :bulb: [Testing](#testing)
+5. :rocket: [Deployment](#deployment)
+6. :eyeglasses[AI augmentation](#ai-augmentation)
+7. :clapper: [Credits](#credits)
 ## UX/UI Design
 ### User stories
 As a player, I want to...
