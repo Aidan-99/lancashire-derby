@@ -10,23 +10,42 @@ body {
     font-family: "Jersey 15", sans-serif;
 }
 
-/* formatting cards */
-.card-img-frame {
-  width: 100%;
-  height: 200px;
-  background: url('assets/images/stadium.png') center center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#race-track {
+  width: 80vw;
+  margin: 40px auto;
+  border: 2px solid #333;
+  padding: 20px;
+  background: #e0e0e0;
+  position: relative;
+  min-height: 220px;
+}
+.horse {
+  position: absolute;
+  left: 0;
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  transition: left 0.1s;
+  transform: scaleX(-1);
 }
 
-.horse-img {
-  width: 100%;
-  height: 100%;
-  max-width: 300px;
-  max-height: 200px;
-  object-fit: contain;
-  background: transparent;
-  display: block;
+.race-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
-/* end of formatting cards */
+
+#start-race {
+  margin-bottom: 10px;
+}
+
+#winner {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 10px;
+}
