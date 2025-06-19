@@ -1,0 +1,11 @@
+:root {
+    --first-color: #abcad5;
+    --second-color: #d5933c;
+    --third-color: #7f9a5a;
+    --fourth-color: #15261e;
+    --fifth-color: #847488;
+}
+
+body {
+    font-family: "Jersey 15", sans-serif;
+}
