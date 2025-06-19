@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&family=Edu+SA+Hand:wght@400..700&family=Jersey+15&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"UTF
+      rel="stylesheet"
     />
     <title>lancashire-derby</title>
   </head>
@@ -22,69 +22,161 @@
   <body>
     <!-- nav bar start -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          
-          <a class="navbar-brand" href="#">Lancashire Derby</a>
-          
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Lancashire Derby</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#how-to-play">How to Play</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#make-a-bet">Make a Bet</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#competitors">Competitors</a>
-              </li>
-            </ul>
-          </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#how-to-play">How to Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#make-a-bet">Make a Bet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#competitors">Competitors</a>
+            </li>
+          </ul>
         </div>
-      </nav> 
-      <!-- nav bar end -->
+      </div>
+    </nav>
+    <!-- nav bar end -->
 
-<!-- betting area start -->
- <!-- betting area end -->
+    <!-- betting area start -->
+    <section id="make-a-bet" class="container my-5" style="max-width:400px;">
+      <h2 class="text-center mb-4">Make a Bet</h2>
+      <div class="card mx-auto">
+        <div class="card-body">
+          <form id="betForm">
+            <!-- Horse select -->
+            <div class="mb-3">
+              <label for="horseSelect" class="form-label">Choose a Horse:</label>
+              <select class="form-select" id="horseSelect" required>
+                <option selected disabled>Bet on horse</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                
+              </select>
+            </div>
 
- <!-- game area start -->
+            <!-- Bet Amount -->
+            <div class="mb-3">
+              <label for="betAmount" class="form-label">Bet Amount $</label>
+              <input
+                type="number"
+                class="form-control"
+                id="betAmount"
+                min="50"
+                value="100"
+                placeholder="Enter your bet amount"
+                required
+              />
+            </div>
 
- <!-- test change-->
- <!-- game area end -->
+            <!-- Choose Level dropdown under Bet Amount -->
+            <div class="mb-3">
+              <label for="levelSelect" class="form-label">Choose Level:</label>
+              <select class="form-select" id="levelSelect" required style="max-width:150px;">
+                <option value="" selected disabled>Select difficulty level</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
 
- <!-- horse information area start -->
-  <!-- horse information area end  -->
+            <!-- Place Bet button -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Place Bet</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- betting area end -->
 
-      <!-- footer start -->
-<footer class="bg-light text-center py-3 mt-4">
-    <p class="mb-1">&copy; 2025 Lancashire Derby</p>
-    <ul class="list-inline">
-      <li class="list-inline-item">
-        <a href="https://github.com/Katona-Peter" class="text-decoration-none" target="_blank">Peter</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="https://github.com/khalidmohamud20" class="text-decoration-none" target="_blank">Khalid</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="https://github.com/ajshirlow7" class="text-decoration-none" target="_blank">Andrew</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="https://github.com/Aidan-99" class="text-decoration-none" target="_blank">Aidan</a>
-      </li>
-    </ul>
-  </footer>
-  <!-- footer end  -->
+    <!-- game area start -->
+    <!-- Start button -->
+    <div class="text-center my-4">
+      <button id="startGameBtn" class="btn btn-success btn-lg">Start Game</button>
+    </div>
+
+    <!-- Results table (small) -->
+    <div class="container my-4" style="max-width: 300px;">
+      <h3 class="text-center mb-3">Race Results</h3>
+      <table
+        class="table table-striped text-center"
+        style="font-size: 0.8rem; width: 100%;"
+      >
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Horse</th>
+          </tr>
+        </thead>
+        <tbody id="resultsTableBody">
+          <tr><td>1st</td><td>---</td></tr>
+          <tr><td>2nd</td><td>---</td></tr>
+          <tr><td>3rd</td><td>---</td></tr>
+          <tr><td>4th</td><td>---</td></tr>
+          <tr><td>5th</td><td>---</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- game area end -->
+
+    <!--test change-->
+
+    <!-- horse information area start -->
+    <!-- horse information area end -->
+
+    <!-- stats tracker start -->
+    <section id="stats" class="container my-4" style="max-width: 300px;">
+      <h4 class="text-center mb-3">Your Stats</h4>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Wins
+          <span id="winsCount" class="badge bg-success rounded-pill">0</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Losses
+          <span id="lossesCount" class="badge bg-danger rounded-pill">0</span>
+        </li>
+      </ul>
+    </section>
+    <!-- stats tracker end -->
+
+    <!-- footer start -->
+    <footer class="bg-light text-center py-3 mt-4">
+      <p class="mb-1">&copy; 2025 Lancashire Derby</p>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="https://github.com/Katona-Peter" class="text-decoration-none" target="_blank">Peter</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://github.com/khalidmohamud20" class="text-decoration-none" target="_blank">Khalid</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://github.com/ajshirlow7" class="text-decoration-none" target="_blank">Andrew</a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://github.com/Aidan-99" class="text-decoration-none" target="_blank">Aidan</a>
+        </li>
+      </ul>
+    </footer>
+    <!-- footer end -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
