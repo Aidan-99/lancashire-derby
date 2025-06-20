@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('start-race');
   const winnerDiv = document.getElementById('winner');
   const track = document.getElementById('race-track');
+  const resultsBody = document.getElementById('results-body');
   let raceInterval = null;
 
   function getTrackWidth() {
@@ -18,8 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function positionHorses() {
     const rowHeight = 50;
+    const baseOffset = 100; // Move all horses down by 100px
     horses.forEach((horse, i) => {
-      horse.style.top = (i * rowHeight) + 'px';
+      horse.style.top = (baseOffset + i * rowHeight) + 'px';
       horse.style.left = '0px';
     });
   }
@@ -27,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function resetRace() {
     positionHorses();
     winnerDiv.textContent = '';
+  }
+
+  function getOrdinal(n) {
+    const s = ["th", "st", "nd", "rd"],
+      v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
   }
 
   function startRace() {
@@ -38,17 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const speeds = horses.map(() => Math.random() * 3 + 2);
     const positions = [0, 0, 0, 0];
+    const finished = [];
+    const finishTimes = [null, null, null, null];
+    let tick = 0;
 
     raceInterval = setInterval(() => {
+      tick++;
       for (let i = 0; i < horses.length; i++) {
+        if (finishTimes[i] !== null) continue; // Skip finished horses
         positions[i] += speeds[i] + Math.random() * 2;
         if (positions[i] > trackWidth) positions[i] = trackWidth;
         horses[i].style.left = positions[i] + 'px';
-        if (positions[i] >= trackWidth) {
-          clearInterval(raceInterval);
-          winnerDiv.textContent = `🏆 Winner: Horse ${i + 1}!`;
-          break;
+        if (positions[i] >= trackWidth && finishTimes[i] === null) {
+          finishTimes[i] = tick;
+          finished.push({ horse: i + 1, tick });
         }
+      }
+      // When all horses have finished, show results
+      if (finished.length === horses.length) {
+        clearInterval(raceInterval);
+        // Sort by finish tick (lower is better)
+        finished.sort((a, b) => a.tick - b.tick);
+        // Clear previous results
+        resultsBody.innerHTML = '';
+        finished.forEach((entry, idx) => {
+          const row = document.createElement('tr');
+          const posCell = document.createElement('td');
+          const horseCell = document.createElement('td');
+          posCell.textContent = getOrdinal(idx + 1);
+          horseCell.textContent = `Horse ${entry.horse}`;
+          row.appendChild(posCell);
+          row.appendChild(horseCell);
+          resultsBody.appendChild(row);
+        });
       }
     }, 30);
   }
