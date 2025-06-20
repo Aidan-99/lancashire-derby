@@ -47,9 +47,6 @@ body {
   z-index: 1;
 }
 
-  min-height: 220px;
-  z-index: 1;
-}
 .horse {
   position: absolute;
   left: 0;
@@ -104,4 +101,3 @@ body {
 
 
 
-}
