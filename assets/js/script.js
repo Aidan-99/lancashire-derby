@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('horse1'),
     document.getElementById('horse2'),
     document.getElementById('horse3'),
-    document.getElementById('horse4')
+    document.getElementById('horse4'),
+    document.getElementById('horse5'),
+    document.getElementById('horse6')
   ];
   const startBtn = document.getElementById('start-race');
   const winnerDiv = document.getElementById('winner');
@@ -51,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     const speeds = horses.map(() => Math.random() * 3 + 2);
-    const positions = [0, 0, 0, 0];
+    const positions = [0, 0, 0, 0, 0, 0];
     const finished = [];
-    const finishTimes = [null, null, null, null];
+    const finishTimes = [null, null, null, null, null, null];
     let tick = 0;
 
     raceInterval = setInterval(() => {

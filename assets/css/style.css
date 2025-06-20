@@ -10,23 +10,6 @@ body {
     font-family: "Jersey 15", sans-serif;
 }
 
-#race-track-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-#race-track-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('../images/your-background.jpg'); /* your image path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.4; /* Lower value = more transparent */
-  z-index: 0;
-}
-
 #race-track {
   width: 80vw;
   margin: 40px auto;
@@ -34,8 +17,7 @@ body {
   padding: 20px;
   background: #e0e0e0;
   position: relative;
-  min-height: 220px;
-  z-index: 1;
+  min-height: 350px; /* Increase if needed for more horses */
 }
 .horse {
   position: absolute;
@@ -69,4 +51,12 @@ body {
   font-size: 1.5em;
   font-weight: bold;
   margin-top: 10px;
+}
+
+#race-track-bg {
+  background-image: url('../images/stadium.png'); /* Use your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 0; /* Adjust as needed for spacing */
 }
