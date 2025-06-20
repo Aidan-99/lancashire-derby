@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const winnerDiv = document.getElementById('winner');
   const track = document.getElementById('race-track');
   const resultsBody = document.getElementById('results-body');
+  // Add reference to the audio element
+  const raceStartSound = document.getElementById('raceStartSound');
   let raceInterval = null;
 
   function getTrackWidth() {
@@ -19,9 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function positionHorses() {
     const rowHeight = 50;
-    const baseOffset = 100; // Move all horses down by 100px
     horses.forEach((horse, i) => {
-      horse.style.top = (baseOffset + i * rowHeight) + 'px';
+      horse.style.top = (i * rowHeight) + 'px';
       horse.style.left = '0px';
     });
   }
@@ -38,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startRace() {
+    // Play the race start sound
+    if (raceStartSound) {
+      raceStartSound.currentTime = 0;
+      raceStartSound.play();
+    }
     resetRace();
     const trackWidth = getTrackWidth();
     if (trackWidth === 0) {
@@ -59,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         horses[i].style.left = positions[i] + 'px';
         if (positions[i] >= trackWidth && finishTimes[i] === null) {
           finishTimes[i] = tick;
-          finished.push({ horse: i + 1, tick });
+          finished.push({ horse: i, tick }); // Store index
         }
       }
       // When all horses have finished, show results
@@ -74,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const posCell = document.createElement('td');
           const horseCell = document.createElement('td');
           posCell.textContent = getOrdinal(idx + 1);
-          horseCell.textContent = `Horse ${entry.horse}`;
+          horseCell.textContent = horses[entry.horse].alt; // Use alt text
           row.appendChild(posCell);
           row.appendChild(horseCell);
           resultsBody.appendChild(row);
