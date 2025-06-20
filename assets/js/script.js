@@ -8,67 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('start-race');
   const winnerDiv = document.getElementById('winner');
   const track = document.getElementById('race-track');
-  const resultsTable = document.getElementById('resultsTableBody');
-  const winsDisplay = document.getElementById('winsCount');
-  const lossesDisplay = document.getElementById('lossesCount');
+  const resultsBody = document.getElementById('results-body');
+  // Add reference to the audio element
+  const raceStartSound = document.getElementById('raceStartSound');
+  let raceInterval = null;
 
-  // New elements for betting
-  const betForm = document.getElementById("betForm");
-  const horseSelect = document.getElementById("horseSelect");
-  const betAmountInput = document.getElementById("betAmount");
-  const currentBalanceDisplay = document.getElementById("currentBalance");
-
-  let playerHorse = null;
-  let wins = 0;
-  let losses = 0;
-  let raceInProgress = false;
-
-  // Start user with £100
-  let currentBalance = 100;
-  let currentBet = 0;
-
-  // Update the max attribute of betAmount to currentBalance and display balance
-  function updateBetInputLimits() {
-    betAmountInput.max = currentBalance;
-    if (parseInt(betAmountInput.value) > currentBalance) {
-      betAmountInput.value = currentBalance;
-    }
-    currentBalanceDisplay.textContent = `You currently have £${currentBalance}`;
+  function getTrackWidth() {
+    const horseWidth = horses[0].offsetWidth;
+    const width = track.offsetWidth - horseWidth;
+    return width > 0 ? width : 0;
   }
 
-  // Handle Bet Form submission
-  betForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const selected = horseSelect.value;
-    const betAmount = parseInt(betAmountInput.value);
-
-    if (!selected) {
-      alert("Please select a horse to bet on.");
-      return;
-    }
-
-    if (isNaN(betAmount) || betAmount < 50) {
-      alert("Minimum bet is £50.");
-      return;
-    }
-    if (betAmount > currentBalance) {
-      alert(`You don't have enough funds to bet £${betAmount}.`);
-      return;
-    }
-
-    // Set the player's horse and current bet amount
-    playerHorse = parseInt(selected);
-    currentBet = betAmount;
-
-    // Deduct the bet amount from the balance immediately
-    currentBalance -= currentBet;
-    updateBetInputLimits();
-
-    alert(`Bet placed on Horse ${playerHorse} for £${currentBet}`);
-  });
-
-  // Position Horses vertically on left start line
   function positionHorses() {
     const rowHeight = 50;
     horses.forEach((horse, i) => {
@@ -81,59 +31,24 @@ document.addEventListener('DOMContentLoaded', () => {
   function resetRace() {
     positionHorses();
     winnerDiv.textContent = '';
-    resultsTable.innerHTML = `
-      <tr><td>1st</td><td>---</td></tr>
-      <tr><td>2nd</td><td>---</td></tr>
-      <tr><td>3rd</td><td>---</td></tr>
-      <tr><td>4th</td><td>---</td></tr>
-    `;
   }
 
-  // Show race results and update wins/losses & balance
-  function declareResults(order) {
-    const positions = ['1st', '2nd', '3rd', '4th'];
-    resultsTable.innerHTML = '';
-    for (let i = 0; i < order.length; i++) {
-      resultsTable.innerHTML += `<tr><td>${positions[i]}</td><td>Horse ${order[i]}</td></tr>`;
-    }
-
-    const winnerHorse = order[0];
-    if (playerHorse === winnerHorse) {
-      wins++;
-      winnerDiv.textContent = `🎉 You won! Horse ${winnerHorse} placed 1st! You earn £${currentBet * 2}!`;
-      // Add double the bet amount (win the bet amount + the original bet back)
-      currentBalance += currentBet * 2;
-    } else {
-      losses++;
-      winnerDiv.textContent = `😞 You lost. Horse ${winnerHorse} won the race. You lost £${currentBet}.`;
-      // Bet amount was already deducted
-    }
-
-    winsDisplay.textContent = wins;
-    lossesDisplay.textContent = losses;
-
-    updateBetInputLimits();
-
-    // Reset bet for next race
-    playerHorse = null;
-    currentBet = 0;
-    raceInProgress = false;
-    startBtn.disabled = false; // Re-enable start button
+  function getOrdinal(n) {
+    const s = ["th", "st", "nd", "rd"],
+      v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
   }
 
-  // Animate the race
   function startRace() {
-    if (raceInProgress) return;
-    if (!playerHorse) {
-      alert("Place a bet before starting the race!");
-      return;
+    // Play the race start sound
+    if (raceStartSound) {
+      raceStartSound.currentTime = 0;
+      raceStartSound.play();
     }
-    if (currentBet <= 0) {
-      alert("Please place a valid bet before starting the race!");
-      return;
-    }
-    if (currentBalance < 0) {
-      alert("You don't have enough funds to race!");
+    resetRace();
+    const trackWidth = getTrackWidth();
+    if (trackWidth === 0) {
+      winnerDiv.textContent = "Track width is zero. Try resizing the window or check your layout.";
       return;
     }
 
@@ -145,22 +60,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const speeds = horses.map(() => Math.random() * 3 + 2);
     const positions = [0, 0, 0, 0];
     const finished = [];
+    const finishTimes = [null, null, null, null];
+    let tick = 0;
 
-    const interval = setInterval(() => {
+    raceInterval = setInterval(() => {
+      tick++;
       for (let i = 0; i < horses.length; i++) {
-        if (finished.includes(i + 1)) continue;
-
+        if (finishTimes[i] !== null) continue; // Skip finished horses
         positions[i] += speeds[i] + Math.random() * 2;
-        if (positions[i] >= trackWidth) {
-          positions[i] = trackWidth;
-          finished.push(i + 1);
-        }
+        if (positions[i] > trackWidth) positions[i] = trackWidth;
         horses[i].style.left = positions[i] + 'px';
+        if (positions[i] >= trackWidth && finishTimes[i] === null) {
+          finishTimes[i] = tick;
+          finished.push({ horse: i, tick }); // Store index
+        }
       }
-
+      // When all horses have finished, show results
       if (finished.length === horses.length) {
-        clearInterval(interval);
-        declareResults(finished);
+        clearInterval(raceInterval);
+        // Sort by finish tick (lower is better)
+        finished.sort((a, b) => a.tick - b.tick);
+        // Clear previous results
+        resultsBody.innerHTML = '';
+        finished.forEach((entry, idx) => {
+          const row = document.createElement('tr');
+          const posCell = document.createElement('td');
+          const horseCell = document.createElement('td');
+          posCell.textContent = getOrdinal(idx + 1);
+          horseCell.textContent = horses[entry.horse].alt; // Use alt text
+          row.appendChild(posCell);
+          row.appendChild(horseCell);
+          resultsBody.appendChild(row);
+        });
       }
     }, 30);
   }
