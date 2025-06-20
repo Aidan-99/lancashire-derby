@@ -27,12 +27,16 @@
       /* Flip horse emoji horizontally so it faces left */
       transform: scaleX(-1);
     }
-    #race-controls {
+    .race-controls {
       display: flex;
-      justify-content: center;
+      justify-content: center; /* Center horizontally */
       align-items: center;
       gap: 1rem;
       margin-bottom: 1rem;
+    }
+    #start-race {
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
     }
     #winner {
       font-weight: bold;
@@ -66,20 +70,19 @@
     </div>
   </nav>
 
-     
-<div id="race-track-bg">
-  <div id="race-track">
-    <img class="horse" id="horse1" src="assets/images/racehorse1.png" alt="Thunderbolt">
-    <img class="horse" id="horse2" src="assets/images/racehorse2.png" alt="Midnight Star">
-    <img class="horse" id="horse3" src="assets/images/racehorse3.png" alt="Golden Arrow">
-    <img class="horse" id="horse4" src="assets/images/racehorse4.png" alt="Shadow Dancer">
+  <div id="race-track-bg">
+    <div id="race-track">
+      <img class="horse" id="horse1" src="assets/images/racehorse1.png" alt="Thunderbolt">
+      <img class="horse" id="horse2" src="assets/images/racehorse2.png" alt="Midnight Star">
+      <img class="horse" id="horse3" src="assets/images/racehorse3.png" alt="Golden Arrow">
+      <img class="horse" id="horse4" src="assets/images/racehorse4.png" alt="Shadow Dancer">
+    </div>
   </div>
-</div>
-<div class="race-controls">
-  <button id="start-race">Start Race</button>
-  <div id="winner"></div>
-</div>
-      <!-- nav bar end -->
+
+  <div class="race-controls">
+    <button id="start-race">Start Race</button>
+    <div id="winner"></div>
+  </div>
 
   <!-- Betting area -->
   <section id="make-a-bet" class="container my-5" style="max-width: 400px;">
@@ -122,110 +125,106 @@
     </div>
   </section>
 
-    <!-- Results table (small) -->
-    <div class="container my-4" style="max-width: 300px;">
-      <h3 class="text-center mb-3">Race Results</h3>
-      <table
-        class="table table-striped text-center"
-        style="font-size: 0.8rem; width: 100%;"
-      >
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Horse</th>
-          </tr>
-        </thead>
-        <tbody id="results-body">
-          <tr><td>1st</td><td>---</td></tr>
-          <tr><td>2nd</td><td>---</td></tr>
-          <tr><td>3rd</td><td>---</td></tr>
-          <tr><td>4th</td><td>---</td></tr>
-          <tr><td>5th</td><td>---</td></tr>
-        </tbody>
-      </table>
-    </div>
- <!-- game area start -->
+  <!-- Results table (small) -->
+  <div class="container my-4" style="max-width: 300px;">
+    <h3 class="text-center mb-3">Race Results</h3>
+    <table
+      class="table table-striped text-center"
+      style="font-size: 0.8rem; width: 100%;"
+    >
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Horse</th>
+        </tr>
+      </thead>
+      <tbody id="results-body">
+        <tr><td>1st</td><td>---</td></tr>
+        <tr><td>2nd</td><td>---</td></tr>
+        <tr><td>3rd</td><td>---</td></tr>
+        <tr><td>4th</td><td>---</td></tr>
+        <tr><td>5th</td><td>---</td></tr>
+      </tbody>
+    </table>
+  </div>
 
- <!-- test change-->
- <!-- game area end -->
-
- <!-- horse information area start -->
-<div id="competitors" class="container my-5">
-  <h2 class="text-center mb-4">Meet the Competitors</h2>
-  <br>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-frame">
-          <img src="assets/images/racehorse1.png" class="card-img-top horse-img" alt="Horse 1">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Thunderbolt</h5>
-          <p class="card-text">A seasoned racer known for its speed and agility on the track.</p>
+  <!-- horse information area start -->
+  <div id="competitors" class="container my-5">
+    <h2 class="text-center mb-4">Meet the Competitors</h2>
+    <br>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-img-frame">
+            <img src="assets/images/racehorse1.png" class="card-img-top horse-img" alt="Horse 1">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Thunderbolt</h5>
+            <p class="card-text">A seasoned racer known for its speed and agility on the track.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-frame">
-          <img src="assets/images/racehorse2.png" class="card-img-top horse-img" alt="Horse 2">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Midnight Star</h5>
-          <p class="card-text">Famous for late surges and a strong finish in every race.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-frame">
-          <img src="assets/images/racehorse3.png" class="card-img-top horse-img" alt="Horse 3">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Golden Arrow</h5>
-          <p class="card-text">A young contender with impressive acceleration and stamina.</p>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-img-frame">
+            <img src="assets/images/racehorse2.png" class="card-img-top horse-img" alt="Horse 2">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Midnight Star</h5>
+            <p class="card-text">Famous for late surges and a strong finish in every race.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-frame">
-          <img src="assets/images/racehorse4.png" class="card-img-top horse-img" alt="Horse 4">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Shadow Dancer</h5>
-          <p class="card-text">Known for its tactical racing and ability to outmaneuver rivals.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-frame">
-          <img src="assets/images/racehorse5.png" class="card-img-top horse-img" alt="Horse 5">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Crimson Blaze</h5>
-          <p class="card-text">A crowd favorite with a fiery spirit and relentless pace.</p>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-img-frame">
+            <img src="assets/images/racehorse3.png" class="card-img-top horse-img" alt="Horse 3">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Golden Arrow</h5>
+            <p class="card-text">A young contender with impressive acceleration and stamina.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-frame">
-          <img src="assets/images/racehorse6.png" class="card-img-top horse-img" alt="Horse 6">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-img-frame">
+            <img src="assets/images/racehorse4.png" class="card-img-top horse-img" alt="Horse 4">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Shadow Dancer</h5>
+            <p class="card-text">Known for its tactical racing and ability to outmaneuver rivals.</p>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Emerald Flash</h5>
-          <p class="card-text">Renowned for quick starts and maintaining the lead throughout.</p>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-img-frame">
+            <img src="assets/images/racehorse5.png" class="card-img-top horse-img" alt="Horse 5">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Crimson Blaze</h5>
+            <p class="card-text">A crowd favorite with a fiery spirit and relentless pace.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-img-frame">
+            <img src="assets/images/racehorse6.png" class="card-img-top horse-img" alt="Horse 6">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Emerald Flash</h5>
+            <p class="card-text">Renowned for quick starts and maintaining the lead throughout.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- horse information area end  -->
+  <!-- horse information area end  -->
 
-      <!-- footer start -->
-<footer class="bg-light text-center py-3 mt-4">
+  <!-- footer start -->
+  <footer class="bg-light text-center py-3 mt-4">
     <p class="mb-1">&copy; 2025 Lancashire Derby</p>
     <ul class="list-inline">
       <li class="list-inline-item">
@@ -243,12 +242,12 @@
     </ul>
   </footer>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-    <script src="assets/js/script.js"></script>
-    <audio id="raceStartSound" src="assets/sounds/horn.mp3" preload="auto"></audio>
-  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"
+  ></script>
+  <script src="assets/js/script.js"></script>
+  <audio id="raceStartSound" src="assets/sounds/horn.mp3" preload="auto"></audio>
+</body>
 </html>
