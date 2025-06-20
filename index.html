@@ -55,11 +55,13 @@
       </nav> 
 
      
-<div id="race-track">
-  <div class="horse" id="horse1">🐎</div>
-  <div class="horse" id="horse2">🐎</div>
-  <div class="horse" id="horse3">🐎</div>
-  <div class="horse" id="horse4">🐎</div>
+<div id="race-track-bg">
+  <div id="race-track">
+    <img class="horse" id="horse1" src="assets/images/racehorse1.png" alt="Thunderbolt">
+    <img class="horse" id="horse2" src="assets/images/racehorse2.png" alt="Midnight Star">
+    <img class="horse" id="horse3" src="assets/images/racehorse3.png" alt="Golden Arrow">
+    <img class="horse" id="horse4" src="assets/images/racehorse4.png" alt="Shadow Dancer">
+  </div>
 </div>
 <div class="race-controls">
   <button id="start-race">Start Race</button>
@@ -253,5 +255,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="assets/js/script.js"></script>
+    <audio id="raceStartSound" src="assets/sounds/horn.mp3" preload="auto"></audio>
   </body>
 </html>
