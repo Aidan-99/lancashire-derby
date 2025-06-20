@@ -9,37 +9,57 @@
 }
 
 body {
-  font-family: "Jersey 15", sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-  margin: 0;
-  padding: 0;
+    font-family: "Jersey 15", sans-serif;
+}
+
+#race-track-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+#race-track-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/your-background.jpg'); /* your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4; /* Lower value = more transparent */
+  z-index: 0;
 }
 
 #race-track {
   width: 80vw;
   margin: 40px auto;
   border: 3px solid var(--fourth-color);
+  border: 2px solid #333;
   padding: 20px;
   background: var(--first-color);
+  background: #e0e0e0;
   position: relative;
   min-height: 220px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(21, 38, 30, 0.3);
+  min-height: 220px;
+  z-index: 1;
 }
 
 .horse {
   position: absolute;
   left: 0;
-  font-size: 2.5em;
-  margin-top: 0;
-  margin-bottom: 0;
+  top: 0;
+  width: 70px;      /* Adjust size as needed */
+  height: 60px;     /* Adjust size as needed */
+  object-fit: contain;
+  margin: 0;
   background: none;
   border: none;
   padding: 0;
   border-radius: 0;
   transition: left 0.1s;
-  transform: scaleX(-1);
+  z-index: 2;
+  transform: scaleX(1); /* Flip if you want horses facing right */
 }
 
 /* Assign different horse colors using nth-child */
@@ -76,3 +96,5 @@ body {
   margin-top: 10px;
   color: var(--fifth-color);
 }
+
+
