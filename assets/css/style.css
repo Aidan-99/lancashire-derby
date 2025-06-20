@@ -1,28 +1,33 @@
 :root {
-    --first-color: #abcad5;
-    --second-color: #d5933c;
-    --third-color: #7f9a5a;
-    --fourth-color: #15261e;
-    --fifth-color: #847488;
+  --first-color: #abcad5;        /* Grayish Blue */
+  --second-color: #d5933c;       /* Tiger's Eye */
+  --third-color: #7f9a5a;        /* Moss Green */
+  --fourth-color: #15261e;       /* Dark Jungle Green */
+  --fifth-color: #947488;        /* Mountbatten Pink */
+  --bg-light: #f5f5f5;
+  --text-dark: #15261e;
 }
 
 body {
-    font-family: "Jersey 15", sans-serif;
+  font-family: "Jersey 15", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
 }
 
 #race-track {
   width: 80vw;
   margin: 40px auto;
+  border: 3px solid var(--fourth-color);
   padding: 20px;
+  background: var(--first-color);
   position: relative;
-  min-height: 310px;
-  background-size: cover;           /* Fills the box, cropping if needed */
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  border: 3px solid #444;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  min-height: 220px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(21, 38, 30, 0.3);
 }
+
 .horse {
   position: absolute;
   left: 0;
@@ -37,6 +42,13 @@ body {
   transform: scaleX(-1);
 }
 
+/* Assign different horse colors using nth-child */
+.horse:nth-child(1) { color: var(--second-color); }
+.horse:nth-child(2) { color: var(--third-color); }
+.horse:nth-child(3) { color: var(--fifth-color); }
+.horse:nth-child(4) { color: var(--fourth-color); }
+.horse:nth-child(5) { color: var(--first-color); }
+
 .race-controls {
   display: flex;
   flex-direction: column;
@@ -45,31 +57,22 @@ body {
 }
 
 #start-race {
-  margin-bottom: 10px;
+  background-color: var(--second-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+#start-race:hover {
+  background-color: #b87324;
 }
 
 #winner {
   font-size: 1.5em;
   font-weight: bold;
   margin-top: 10px;
-}
-
-.card-img-frame {
-  width: 100%;
-  aspect-ratio: 3/2;
-  min-height: 250px;
-  background: url('../images/stadium.png') center center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-top-left-radius: var(--bs-card-border-radius, 0.5rem);
-  border-top-right-radius: var(--bs-card-border-radius, 0.5rem);
-}
-.horse-img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  background: transparent;
-  display: block;
+  color: var(--fifth-color);
 }
