@@ -18,6 +18,7 @@
 . Test and validate the application using **W3C Validator** and **Lighthouse**.
 
 .Deploy the project using **Git** and **Github pages**.
+cat -n README.md
 
 ## Table of contents
 1. :art: [UX/UI Design](#uxui-design)
