@@ -91,4 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   positionHorses();
   startBtn.addEventListener('click', startRace);
-});
+}); 
+
+let balance = 500;
+let currentBet = null;
+const walletDisplay = document.getElementById('wallet');
+const messageBox = document.getElementById('message');
+const horseSelect = document.getElementById('horseSelect');
+const betAmountInput = document.getElementById('betAmount');
+
+function updateWalletDisplay() {
+  walletDisplay.textContent = `💰 Current Balance: $${balance}`;
+}
