@@ -268,6 +268,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeBetPlacedModal) {
     closeBetPlacedModal.addEventListener('click', () => {
       betPlacedModal.style.display = 'none';
+      // Scroll to the race track
+      const raceTrack = document.getElementById('race-track-bg');
+      if (raceTrack) {
+        raceTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   }
 
