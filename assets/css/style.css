@@ -23,7 +23,7 @@ body {
     ),
     linear-gradient(to bottom, #8fd694 80%, #b7e4a7 100%);
   position: relative;
-  min-height: 330px;
+  min-height: 350px;
   border-radius: 18px;
   box-shadow: 0 8px 32px rgba(60, 100, 40, 0.15);
   overflow: hidden;
@@ -64,10 +64,10 @@ body {
 
 .horse {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   width: 70px;      /* Adjust size as needed */
-  height: 60px;     /* Adjust size as needed */
+  height: 48px;     /* Adjust to your image size */
   object-fit: contain;
   margin: 0;
   background: none;
@@ -77,6 +77,22 @@ body {
   transition: left 0.1s;
   z-index: 2;
   transform: scaleX(1); /* Flip if you want horses facing right */
+}
+
+.horse-name-tag {
+  position: absolute;
+  min-width: 110px;
+  padding: 4px 12px;
+  background: rgba(220,220,220,0.4);
+  color: #222;
+  border-radius: 16px;
+  font-size: 1rem;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: left 0.03s linear, top 0.03s linear;
 }
 
 .race-controls {
@@ -187,4 +203,47 @@ body {
   width: 100%;
   position:fixed;
   z-index: 1000;       /* Keeps it above other elements */
+}
+
+/* Position tag for finish line */
+.finish-position-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(220,220,220,0.95);
+  color: #222;
+  border-radius: 16px 0 0 16px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 6px 18px;
+  z-index: 10;
+  border: 2px solid #7bb661;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  opacity: 0;
+  transition: right 0.7s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+  pointer-events: none;
+}
+
+#make-a-bet h2 {
+  color: #3e5c2c;
+  font-weight: bold; 
+  letter-spacing: 1px; 
+}
+
+#results-table h3 {
+  color: #3e5c2c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.green-title {
+  color: #3e5c2c;
+  font-weight: bold;
+}
+
+.green-card {
+  background: #f8f9fa;
+  border: 2px solid #3e5c2c;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(60, 100, 40, 0.08);
 }

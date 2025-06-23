@@ -74,10 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function positionHorses() {
+    const startTop = 30;
     const rowHeight = 50;
     horses.forEach((horse, i) => {
-      horse.style.top = (i * rowHeight) + 'px';
+      const top = startTop + i * rowHeight;
+      horse.style.top = top + 'px';
       horse.style.left = '0px';
+      // Move the name tag as well
+      const nameTag = document.getElementById(`horse${i+1}-name`);
+      if (nameTag) {
+        nameTag.style.left = (horse.offsetWidth + 10) + 'px';
+        nameTag.style.top = (top + horse.offsetHeight / 2 - 16) + 'px';
+      }
     });
   }
 
@@ -93,6 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startRace() {
+    // Remove all finish position tags from previous race
+    document.querySelectorAll('.finish-position-tag').forEach(tag => tag.remove());
+
+    const rowHeight = 50; // <-- Add this line!
     // Play the race start sound
     if (raceStartSound) {
       raceStartSound.currentTime = 0;
@@ -122,9 +134,22 @@ document.addEventListener('DOMContentLoaded', () => {
         positions[i] += speeds[i] + Math.random() * 2;
         if (positions[i] > trackWidth) positions[i] = trackWidth;
         horses[i].style.left = positions[i] + 'px';
+        horses[i].style.top = (i * rowHeight) + 'px';
+
+        // Move the name tag to follow the horse
+        const nameTag = document.getElementById(`horse${i + 1}-name`);
+        if (nameTag) {
+          nameTag.style.left = (positions[i] + horses[i].offsetWidth + 10) + 'px';
+          nameTag.style.top = (i * rowHeight + (horses[i].offsetHeight / 2) - 16) + 'px';
+        }
+
         if (positions[i] >= trackWidth && finishTimes[i] === null) {
           finishTimes[i] = tick;
           finished.push({ horse: i, tick }); // Store index
+
+          // Show finish position tag
+          const finishPos = finished.length; // 1-based position
+          showFinishTag(i, finishPos);
         }
       }
       // When all horses have finished, show results
@@ -243,7 +268,75 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeBetPlacedModal) {
     closeBetPlacedModal.addEventListener('click', () => {
       betPlacedModal.style.display = 'none';
+      // Scroll to the race track
+      const raceTrack = document.getElementById('race-track-bg');
+      if (raceTrack) {
+        raceTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
+  }
+
+  // Set initial positions for horses and name tags
+  const horseCount = 6;
+  const startLeft = 0;
+  const startTop = 30;
+  const rowGap = 50;
+
+  for (let i = 0; i < horseCount; i++) {
+    const horse = document.getElementById(`horse${i+1}`);
+    const nameTag = document.getElementById(`horse${i+1}-name`);
+    if (horse && nameTag) {
+      const left = startLeft; // 0 at the start
+      const top = startTop + i * rowGap;
+      horse.style.left = left + "px";
+      horse.style.top = top + "px";
+      // Align name tag exactly with the horse's top and left
+      nameTag.style.left = (left + horse.offsetWidth + 10) + "px";
+      nameTag.style.top = (top + horse.offsetHeight / 2 - 16) + "px";
+    }
+  }
+
+  // In your race animation loop, after moving each horse:
+  // (Assuming positions[i] is the current left position of the horse)
+  function updateHorsePositions(positions) {
+    for (let i = 0; i < horseCount; i++) {
+      const horse = document.getElementById(`horse${i+1}`);
+      const nameTag = document.getElementById(`horse${i+1}-name`);
+      if (horse && nameTag) {
+        horse.style.left = positions[i] + "px";
+        nameTag.style.left = (positions[i] + horse.offsetWidth + 10) + "px";
+        nameTag.style.top = (parseInt(horse.style.top) + horse.offsetHeight/2 - 16) + "px";
+      }
+    }
+  }
+
+  function showFinishTag(horseIndex, position) {
+    const horse = document.getElementById(`horse${horseIndex+1}`);
+    const raceTrack = document.getElementById('race-track');
+    if (!horse || !raceTrack) return;
+
+    // Create the tag
+    const tag = document.createElement('div');
+    tag.className = 'finish-position-tag';
+    tag.textContent = getOrdinal(position);
+
+    // Calculate vertical position to match the horse
+    const horseTop = parseInt(horse.style.top) || 0;
+    tag.style.top = (horseTop + horse.offsetHeight/2 - 18) + 'px';
+
+    // Start at the right edge (finish line)
+    tag.style.right = '-120px'; // offscreen
+    tag.style.opacity = '0';
+
+    raceTrack.appendChild(tag);
+
+    // Animate in: move to just left of the finish line
+    setTimeout(() => {
+      tag.style.right = '0px';
+      tag.style.opacity = '1';
+    }, 50);
   }
 
   positionHorses();
