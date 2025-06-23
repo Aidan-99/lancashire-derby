@@ -6,7 +6,7 @@
 
 ## **Live Demo**
 
-:video_game: Play the Game Here: -add link-
+:video_game: Play the Game Here: [Live Demo](https://aidan-99.github.io/lancashire-derby/)
 
 
 ## Project overview
@@ -26,7 +26,7 @@ cat -n README.md
 3. :computer: [Built with](#built-with)
 4. :bulb: [Testing](#testing)
 5. :rocket: [Deployment](#deployment)
-6. :eyeglasses[AI augmentation](#ai-augmentation)
+6. :eyeglasses: [AI augmentation](#ai-augmentation)
 7. :clapper: [Credits](#credits)
 ## UX/UI Design
 ### User stories
@@ -62,8 +62,24 @@ The colour palette for *Lancashire Derby* was thematically chosen to enhance the
 
 ### Wireframes
 ### Imagery
+
+The Imagery used in the project was chosen to increase immersion in the game, 6 different horses were designed as characters to bet on and race. images of stadiums were also used to create the feeling that the player is truly betting on a live horse race.
+
 ## Features
-## Built with
+Core game features
+
+. Betting- bet on horses out of a starting fund, try to increase funds without going bankrupt.
+
+. Start race- once a bet has been place start a race which will result in one of six horses being declared the winner.
+
+. Betting pot tracking- keep track of the amount of funds in your wallet.
+
+UI and Animation
+
+. Responsve design- play on phone, tablet, or desktop.
+
+. Interactive sounds- triggered when a player carries out an action.
+
 ### Technology and Languages
 . HTML5
 
@@ -95,14 +111,23 @@ The colour palette for *Lancashire Derby* was thematically chosen to enhance the
 .**Responsiveness Testing**- Tested on mobile, tablet, and desktop
 ## Deployment
 ### Deployed via GitHub pages
-Live Demo: -insert link-
-## AI augmentation
+GitHub pages was used to deploy the final project and the game can be accessed through the following link
+
+
+[Live Demo](https://aidan-99.github.io/lancashire-derby/)
+
 ## Credits
 The following resources were used in the development of *Lancashire Derby*:
 
 ### Fonts, Images, Sounds, Icons
 
 . Jersey 15 from google fonts
+
+
+. Several sounds were used to increase immersion within the game
+
+
+. Images were made with photoshop editing in order to create six horses with which the player can make bets on
 
 ### Libraries and Frame works 
 
