@@ -63,7 +63,7 @@ The colour palette for *Lancashire Derby* was thematically chosen to enhance the
 ### Wireframes
 ![Desktop Wireframe](assets/images/New%20Wireframe%201.png)
 
-1[Mobile wireframe](assets/images/New%20Wireframe%202.png)
+![Mobile wireframe](assets/images/New%20Wireframe%202.png)
 
 ### Imagery
 
