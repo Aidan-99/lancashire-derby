@@ -108,6 +108,7 @@ UI and Animation
 
 .**JavaScript Debugging**- Console logging and error fixing  
 ![JS Validator](assets/images/js-validator.png)
+![HTML Example](assets/images/html.png)
 
 .**Lighthouse Performance Testing**- Checked for accessibility, SEO, and speed.
 
