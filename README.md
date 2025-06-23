@@ -61,6 +61,8 @@ The colour palette for *Lancashire Derby* was thematically chosen to enhance the
  The font *Jersey 15* was chosen for any text within the game as its pixelated design adds to the effect of a retro gaming experience while still ensuring readability and accessibility.
 
 ### Wireframes
+![Desktop Wireframe](assets/images/Balsamiq%20wireframe%20desktop.bmpr)
+
 ### Imagery
 
 The Imagery used in the project was chosen to increase immersion in the game, 6 different horses were designed as characters to bet on and race. images of stadiums were also used to create the feeling that the player is truly betting on a live horse race.
