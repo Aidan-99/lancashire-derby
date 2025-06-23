@@ -108,6 +108,8 @@ UI and Animation
 ![HTML Example](assets/images/html.png)
 
 .**CSS Validation**- Tested with **Jigsaw Validator**
+![CSS Image](assets/images/css.png)
+
 
 .**JavaScript Debugging**- Console logging and error fixing  
 ![JS Validator](assets/images/js-validator.png)
