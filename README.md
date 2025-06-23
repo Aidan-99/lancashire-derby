@@ -106,7 +106,8 @@ UI and Animation
 
 .**CSS Validation**- Tested with **Jigsaw Validator**
 
-.**JavaScript Debugging**- Console logging and error fixing
+.**JavaScript Debugging**- Console logging and error fixing  
+![JS Validator](assets/images/js-validator.png)
 
 .**Lighthouse Performance Testing**- Checked for accessibility, SEO, and speed.
 
