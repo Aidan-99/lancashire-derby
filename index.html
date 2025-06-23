@@ -61,10 +61,12 @@
     <img class="horse" id="horse2" src="assets/images/racehorse2.png" alt="Midnight Star">
     <img class="horse" id="horse3" src="assets/images/racehorse3.png" alt="Golden Arrow">
     <img class="horse" id="horse4" src="assets/images/racehorse4.png" alt="Shadow Dancer">
+    <img class="horse" id="horse5" src="assets/images/racehorse5.png" alt="Crimson Blaze">
+    <img class="horse" id="horse6" src="assets/images/racehorse6.png" alt="Emerald Flash">
   </div>
 </div>
 <div class="race-controls">
-  <button id="start-race">Start Race</button>
+  <button id="start-race" disabled>Start Race</button>
   <div id="winner"></div>
 </div>
       <!-- nav bar end -->
@@ -74,58 +76,49 @@
       <h2 class="text-center mb-4">Make a Bet</h2>
       <div class="card mx-auto">
         <div class="card-body">
+          <!-- Add this inside your .card-body, above the <form id="betForm"> -->
+<div class="mb-3 text-center">
+  <strong>Balance: $<span id="userBalance">1000</span></strong>
+</div>
           <form id="betForm">
-            <!-- Horse select -->
-            <div class="mb-3">
-              <label for="horseSelect" class="form-label">Choose a Horse:</label>
-              <select class="form-select" id="horseSelect" required>
-                <option selected disabled>Bet on horse</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                
-              </select>
-            </div>
+  <div class="mb-3">
+    <label for="horseSelect" class="form-label">Choose a Horse:</label>
+    <select class="form-select" id="horseSelect" required>
+      <option selected disabled>Bet on horse</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      
+    </select>
+  </div>
 
-            <!-- Bet Amount -->
-            <div class="mb-3">
-              <label for="betAmount" class="form-label">Bet Amount $</label>
-              <input
-                type="number"
-                class="form-control"
-                id="betAmount"
-                min="50"
-                value="100"
-                placeholder="Enter your bet amount"
-                required
-              />
-            </div>
+  <!-- Bet Amount -->
+  <div class="mb-3">
+    <label for="betAmount" class="form-label">Bet Amount $</label>
+    <input
+      type="number"
+      class="form-control"
+      id="betAmount"
+      min="50"
+      value="100"
+      placeholder="Enter your bet amount"
+      required
+    />
+  </div>
 
-            <!-- Choose Level dropdown under Bet Amount -->
-            <div class="mb-3">
-              <label for="levelSelect" class="form-label">Choose Level:</label>
-              <select class="form-select" id="levelSelect" required style="max-width:150px;">
-                <option value="" selected disabled>Select difficulty level</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-              </select>
-            </div>
+  
 
-            <!-- Place Bet button -->
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">Place Bet</button>
-            </div>
-          </form>
+  <!-- Place Bet button -->
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">Place Bet</button>
+  </div>
+</form>
         </div>
       </div>
     </section>
  <!-- betting area end -->
-    <!-- Start button -->
-    <div class="text-center my-4">
-      <button id="startGameBtn" class="btn btn-success btn-lg">Start Game</button>
-    </div>
+   
 
     <!-- Results table (small) -->
     <div class="container my-4" style="max-width: 300px;">
@@ -281,5 +274,40 @@
     ></script>
     <script src="assets/js/script.js"></script>
     <audio id="raceStartSound" src="assets/sounds/horn.mp3" preload="auto"></audio>
+    <audio id="loseSound" src="assets/sounds/Aww.mp3" preload="auto"></audio>
+    <audio id="outOfMoneySound" src="assets/sounds/fail.mp3" preload="auto"></audio>
+    <audio id="winSound" src="assets/sounds/money.mp3" preload="auto"></audio>
+    <audio id="crowdSound" src="assets/sounds/crowd.mp3" preload="auto"></audio>
   </body>
 </html>
+<div id="loseModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:2rem; border-radius:10px; text-align:center; max-width:90vw;">
+    <h2>Sorry, your horse didn't win this time.</h2>
+    <button id="closeLoseModal" class="btn btn-primary mt-3">OK</button>
+  </div>
+</div>
+
+<!-- Congratulations Modal -->
+<div id="winModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:2rem; border-radius:10px; text-align:center; max-width:90vw;">
+    <h2 id="winModalMsg">Congratulations! Your horse won!</h2>
+    <button id="closeWinModal" class="btn btn-success mt-3">OK</button>
+  </div>
+</div>
+
+<!-- Out of Money Modal -->
+<div id="outOfMoneyModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:2rem; border-radius:10px; text-align:center; max-width:90vw;">
+    <h2>You've ran out of money :(</h2>
+    <p>Better luck next time!</p>
+    <button id="closeOutOfMoneyModal" class="btn btn-secondary mt-3">OK</button>
+  </div>
+</div>
+
+<!-- Bet Placed Modal -->
+<div id="betPlacedModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:2rem; border-radius:10px; text-align:center; max-width:90vw;">
+    <h2 id="betPlacedMsg">Bet placed!</h2>
+    <button id="closeBetPlacedModal" class="btn btn-info mt-3">OK</button>
+  </div>
+</div>
