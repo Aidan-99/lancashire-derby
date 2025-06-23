@@ -2,7 +2,7 @@
     --first-color: #abcad5;
     --second-color: #d5933c;
     --third-color: #7f9a5a;
-    --fourth-color: #15261e;
+    --fourth-color: #c6c6c6;
     --fifth-color: #847488;
 }
 
@@ -13,12 +13,55 @@ body {
 #race-track {
   width: 80vw;
   margin: 40px auto;
-  border: 2px solid #333;
+  border: 4px solid #3e5c2c;
   padding: 20px;
-  background: #e0e0e0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      #7bb661 0 20px,
+      #6ca150 20px 40px
+    ),
+    linear-gradient(to bottom, #8fd694 80%, #b7e4a7 100%);
   position: relative;
-  min-height: 350px; /* Increase if needed for more horses */
+  min-height: 330px;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60, 100, 40, 0.15);
+  overflow: hidden;
 }
+
+/* Optional: Add white railings at the top and bottom */
+#race-track::before,
+#race-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: #fff;
+  border-radius: 6px;
+  z-index: 2;
+}
+#race-track::before {
+  top: 18px;
+}
+#race-track::after {
+  bottom: 18px;
+}
+
+/* Optional: Add some "grass tufts" for realism */
+#race-track .grass-tuft {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: none;
+  border-radius: 50%;
+  box-shadow:
+    2px 2px 0 0 #5e8c3a,
+    8px 4px 0 0 #5e8c3a,
+    12px 0px 0 0 #5e8c3a;
+  opacity: 0.3;
+}
+
 .horse {
   position: absolute;
   left: 0;
@@ -53,42 +96,10 @@ body {
   margin-top: 10px;
 }
 
-.card-img-frame {
-  width: 100%;
-  aspect-ratio: 3/2;
-  min-height: 250px;
-  background: url('../images/stadium.png') center center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-top-left-radius: var(--bs-card-border-radius, 0.5rem);
-  border-top-right-radius: var(--bs-card-border-radius, 0.5rem);
-}
-.horse-img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  background: transparent;
-  display: block;
-}
-
-#how-to-play {
-  max-width: 1000px;
-  margin: 40px auto;         /* Center horizontally */
-  border: 2px solid black;
-  border-radius: 10px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;       /* Center content horizontally */
-  justify-content: center;   /* Center content vertically if height allows */
-}
-
-.horseshoe-list {
-  font-size: large;
-}
-
-.horseshoe-list li::before {
-  content: "🧲";
+#race-track-bg {
+  background-image: url('../images/stadium.png'); /* Use your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 0; /* Adjust as needed for spacing */
 }
