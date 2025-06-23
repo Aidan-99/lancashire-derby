@@ -103,3 +103,88 @@ body {
   background-repeat: no-repeat;
   padding: 40px 0; /* Adjust as needed for spacing */
 }
+
+/* Card styles */
+
+#competitors {
+  background: #f8f9fa;
+  border: 2px solid #3e5c2c;
+  border-radius: 18px;
+  padding: 32px 16px;
+  box-shadow: 0 4px 24px rgba(60, 100, 40, 0.08);
+  margin-bottom: 40px;
+  margin-top: 80px;
+  padding-top: 60px;
+}
+#competitors h2 {
+  color: #3e5c2c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+#competitors .card {
+  border: 1px solid #b7e4a7;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(60, 100, 40, 0.06);
+  background: #fff;
+}
+#competitors .card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(60, 100, 40, 0.15);
+  border-color: #7bb661;
+}
+
+#competitors .card-title {
+  color: #7bb661;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#competitors .card-text {
+  color: #555;
+  font-size: 1rem;
+}
+.card-img-frame {
+  width: 100%; /* Fill the card horizontally */
+  max-width: 100%; /* Prevent overflow */
+  height: 300px;
+  background-image: url('../images/stadium.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top-left-radius: var(--bs-card-border-radius, 0.5rem);
+  border-top-right-radius: var(--bs-card-border-radius, 0.5rem);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* End Card styles */
+
+/* how-to-play styles */
+#how-to-play {
+  background: #f8f9fa;
+  border: 2px solid #3e5c2c;
+  border-radius: 18px;
+  padding: 32px 16px;
+  box-shadow: 0 4px 24px rgba(60, 100, 40, 0.08);
+  margin: 40px auto;
+  max-width: 900px;
+}
+#how-to-play h2 {
+  color: #3e5c2c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* End how-to-play styles */
+
+.navbar{
+  top: 0;              /* Sticks it to the top */
+  width: 100%;
+  position:fixed;
+  z-index: 1000;       /* Keeps it above other elements */
+}
