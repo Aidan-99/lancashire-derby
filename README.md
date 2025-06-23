@@ -105,6 +105,7 @@ UI and Animation
 
 ## Testing
 .**HTML Validation**- Checked with **W3C Validator**
+![HTML Example](assets/images/html.png)
 
 .**CSS Validation**- Tested with **Jigsaw Validator**
 
