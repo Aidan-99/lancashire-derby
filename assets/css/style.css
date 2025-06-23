@@ -188,3 +188,15 @@ body {
   position:fixed;
   z-index: 1000;       /* Keeps it above other elements */
 }
+
+#make-a-bet h2 {
+  color: #3e5c2c;
+  font-weight: bold; 
+  letter-spacing: 1px; 
+}
+
+#results-table h3 {
+  color: #3e5c2c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
